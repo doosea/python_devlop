@@ -13,13 +13,19 @@ def tick(text):
     print(text)
     print("time is %s" % datetime.now())
 
+
 # 阻塞式调度器
 # scheduler = BlockingScheduler()
 # 非阻塞式调度器
-scheduler = BackgroundScheduler()
+scheduler = BackgroundScheduler(daemon=False)
+'''
+    # daemon=True(默认), 设置为守护线程，Python主线程运行完后，直接结束不会理会守护线程的情况，
+    # daemon=False, 如果是非守护线程，Python主线程会在运行完后，等待其他非守护线程运行完后，再结束
+'''
 
 # （1）间隔性任务
-scheduler.add_job(tick, 'interval', seconds=3, start_date='2020-08-21 16:44:00', end_date='2020-08-21 16:45:30', args=["text"])
+scheduler.add_job(tick, 'interval', seconds=3, start_date='2020-08-21 16:44:00', end_date='2020-08-21 17:45:30',
+                  args=["text"])
 # （2）cron
 # scheduler.add_job(tick, 'cron', hour=15, minute=55, args=["text"])
 # （3）date
