@@ -2,7 +2,7 @@ from celery.result import AsyncResult
 from celery_tasks.celery import cel
 
 # 根据id  获取redis 中的结果
-async_result = AsyncResult(id="00c692e2-e95b-4649-b0d2-93e02660665c", app=cel)
+async_result = AsyncResult(id="3bd1030b-c50f-4ca5-b083-3378583223ff", app=cel)
 
 if async_result.successful():
     result = async_result.get()
